@@ -3,6 +3,7 @@ config = {
         port: 8081,
         host: '127.0.0.1'
     },
-    routes: [ { id: "couchdb", match: "^/couchdb/?(.*)$", rewrite: "http://localhost:5984/$1", mode: "p" },
-              { id: "default", match: "^/(.*)$", rewrite: "http://localhost:8080/$1", mode: "p"} ]
+    routes: [ { id: "couchdb", match: "^/couchdb/?(.*)$", rewrite: "http://localhost:5984/$1", modes: ["p"] },
+              { id: "jsonp", match: "^/jsonp/(.*)$", rewrite: "http://localhost:5984/$1", modes: ["p","jsonp","remove_jsonp_query"] },
+              { id: "default", match: "^/(.*)$", rewrite: "http://localhost:8080/$1", modes: ["p"]} ]
 };
