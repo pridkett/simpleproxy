@@ -3,7 +3,9 @@ config = {
         port: 8081,
         host: '127.0.0.1'
     },
-    routes: [ { id: "couchdb", match: "^/couchdb/?(.*)$", rewrite: "http://localhost:5984/$1", modes: ["p"] },
+    routes: [ { id: "rtchat", match: "^/chat.html$", rewrite: "http://localhost:9999/chat.html", modes: ["p"] },
+              { id: "rtchat-socketio", match: "^/((json.js)|(socket.io/socket.io.js))$", rewrite: "http://localhost:9999/$1", modes: ["p"] },
+              { id: "couchdb", match: "^/couchdb/?(.*)$", rewrite: "http://localhost:5984/$1", modes: ["p"] },
               { id: "jsonp", match: "^/jsonp/(.*)$", rewrite: "http://localhost:5984/$1", modes: ["p","jsonp","remove_jsonp_query"] },
               { id: "default", match: "^/(.*)$", rewrite: "http://localhost:8080/$1", modes: ["p"]} ]
 };
