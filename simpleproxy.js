@@ -123,7 +123,7 @@ http.createServer(function(request, response) {
             /* this probably should not assume utf-8 for the charset, but for now it works */
             if (jsonpFunction != null) {
                 proxy_response.headers['content-type'] = "application/javascript;charset=utf-8";
-                proxy_response.headers['content-length'] = proxy_response.headers['content-length'] + jsonpFunction.length + 3;
+                proxy_response.headers['content-length'] = parseInt(proxy_response.headers['content-length']) + jsonpFunction.length + 3;
             }
             response.writeHead(proxy_response.statusCode, proxy_response.headers);
         });
